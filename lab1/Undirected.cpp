@@ -1,14 +1,14 @@
 #include "Undirected.h"
 
-void UndirectedSet::CheckElementForEmpties(string str)
+bool UndirectedSet::CheckElementForEmpties(string str)
 {
 	if (str != "{}" && str != " " && str != "")
 	{
-		set.push_back(str);
+		return true;
 	}
 	else
 	{
-		set.push_back("{}");
+		return false;
 	}
 }
 
@@ -63,7 +63,7 @@ void UndirectedSet::AddInBoolSet(vector<vector<string>>& boolSet, vector<string>
 	}
 }
 
-void UndirectedSet::CheckSubsets(vector<string>& subset)
+void UndirectedSet::ViewingRepetitions(vector<string>& subset)
 {
 	sort(subset.begin(), subset.end());
 	vector<string> bufferSet = set;
@@ -95,11 +95,11 @@ void UndirectedSet::CreateBooleanset(vector<vector<string>>& boolSet, vector<str
 			{
 				CreateBooleanset(boolSet, subset, j + 1);
 			}
-			CheckSubsets(subset);
+			ViewingRepetitions(subset);
 			AddInBoolSet(boolSet, subset);
 			subset.pop_back();
 		}
-		CheckSubsets(subset);
+		ViewingRepetitions(subset);
 		AddInBoolSet(boolSet, subset);
 		subset.pop_back();
 	}
@@ -122,7 +122,7 @@ void UndirectedSet::ShowBooleanSet()
 	cout << "}";
 }
 
-void UndirectedSet::EmptyBooleanSet(UndirectedSet booleanSubset,vector<vector<string>>& boolSet)
+void UndirectedSet::EmptyBooleanSet(UndirectedSet booleanSubset, vector<vector<string>>& boolSet)
 {
 	int counter = 0;
 	for (int i = 0; i < size(booleanSubset.set); i++)
@@ -149,7 +149,14 @@ vector<string> UndirectedSet::WriteSet(string str)
 	for (int i = 0; i < SizeStr(str); i++)
 	{
 		if (str[i] == ',' || str[i] == '\0') {
-			CheckElementForEmpties(element);
+			if (CheckElementForEmpties(element))
+			{
+				set.push_back(element);
+			}
+			else
+			{
+				set.push_back("{}");
+			}
 			element.clear();
 		}
 		if (str[i] == '{') {
@@ -334,8 +341,7 @@ vector<vector<string>> UndirectedSet::BooleanSet()
 			commacounter++;
 		}
 	}
-	EmptyBooleanSet(boolSubset,boolSet);
+	EmptyBooleanSet(boolSubset, boolSet);
 	cout << "}" << endl;
 	return boolSet;
 }
-

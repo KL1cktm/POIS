@@ -11,11 +11,11 @@ class UndirectedSet
 {
 private:
 	vector<string> set;
-	void CheckElementForEmpties(string str);
+	bool CheckElementForEmpties(string str);
 	string FindSubset(string str, int* position);
 	int SizeStr(string str);
 	void AddInBoolSet(vector<vector<string>>& boolSet, vector<string>& subset);
-	void CheckSubsets(vector<string>& subset);
+	void ViewingRepetitions(vector<string>& subset);
 	void CreateBooleanset(vector<vector<string>>& boolSet, vector<string> subset, int startPosition);
 	void ShowBooleanSet();
 	void EmptyBooleanSet(UndirectedSet booleanSubset, vector<vector<string>>& boolset);
