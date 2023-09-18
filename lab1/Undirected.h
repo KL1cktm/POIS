@@ -4,13 +4,14 @@
 #include <vector>
 #include <algorithm>
 #include <cstring>
+#include <Windows.h>
 using namespace std;
 
 class UndirectedSet
 {
 private:
 	vector<string> set;
-	void CheckElement(string str);
+	void CheckElementForEmpties(string str);
 	string FindSubset(string str, int* position);
 	int SizeStr(string str);
 	void AddInBoolSet(vector<vector<string>>& boolSet, vector<string>& subset);
