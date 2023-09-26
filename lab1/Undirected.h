@@ -11,7 +11,7 @@ class UndirectedSet
 {
 private:
 	vector<string> set;
-	bool CheckElementForEmpties(string str);
+	void WriteElementOrEmpties(string str);
 	string FindSubset(string str, int* position);
 	int SizeStr(string str);
 	void AddInBoolSet(vector<vector<string>>& boolSet, vector<string>& subset);

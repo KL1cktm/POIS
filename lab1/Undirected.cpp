@@ -1,14 +1,14 @@
 #include "Undirected.h"
 
-bool UndirectedSet::CheckElementForEmpties(string str)
+void UndirectedSet::WriteElementOrEmpties(string str)
 {
 	if (str != "{}" && str != " " && str != "")
 	{
-		return true;
+		set.push_back(str);
 	}
 	else
 	{
-		return false;
+		set.push_back("{}");
 	}
 }
 
@@ -149,14 +149,7 @@ vector<string> UndirectedSet::WriteSet(string str)
 	for (int i = 0; i < SizeStr(str); i++)
 	{
 		if (str[i] == ',' || str[i] == '\0') {
-			if (CheckElementForEmpties(element))
-			{
-				set.push_back(element);
-			}
-			else
-			{
-				set.push_back("{}");
-			}
+			WriteElementOrEmpties(element);
 			element.clear();
 		}
 		if (str[i] == '{') {
