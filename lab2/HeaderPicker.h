@@ -1,0 +1,16 @@
+#pragma once
+#include <iostream>
+#include <vector>
+#include <string>
+#include "Author.h"
+#include "Book.h"
+#include "BookWarehouse.h"
+#include "Client.h"
+#include "Contact.h"
+#include "Human.h"
+#include "Librarian.h"
+#include "Librarian.h"
+#include "Order.h"
+#include "Publishinghouse.h"
+#include "Review.h"
+#include "Shedule.h"
