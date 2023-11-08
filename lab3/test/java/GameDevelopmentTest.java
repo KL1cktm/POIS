@@ -7,21 +7,21 @@ import org.junit.Test;
 
 public class GameDevelopmentTest {
     @Test
-    public void test1(){
+    public void gameInfoTest(){
         Game game = new Game();
         game.setGameInfo("PUBG","Action","PC");
 
         Assert.assertEquals("Title: PUBG\nGenre: Action\nPlatform: PC\n",game.getGameInfo());
     }
     @Test
-    public void test2(){
+    public void developerInfoTest(){
         Developer developer = new Developer();
         developer.setPersonalInfo("Eugene","Yurhilevich", (byte) 18,"Java,C++");
 
         Assert.assertEquals("YurhilevichEugene18Skills: Java,C++",developer.getPersonalInfo());
     }
     @Test
-    public void test3(){
+    public void financialManagementTest(){
         Company company = new Company();
         company.setStartMoney(14000000);
         company.setTitle("Rock-Star");
@@ -35,7 +35,7 @@ public class GameDevelopmentTest {
         Assert.assertEquals(13985000,company.printMoney());
     }
     @Test
-    public void test4(){
+    public void weaponTest(){
         Company company = new Company();
         Developer developer = new Developer();
         developer.setPlatform("PC");
@@ -53,7 +53,7 @@ public class GameDevelopmentTest {
         Assert.assertEquals(27,weapon.getDamage());
     }
     @Test
-    public void test5(){
+    public void saleProjectTest(){
         Company company = new Company();
         company.setStartMoney(14000000);
         Game game = new Game();
@@ -66,7 +66,7 @@ public class GameDevelopmentTest {
         Assert.assertEquals(12000000,company.printMoney());
     }
     @Test
-    public void test6(){
+    public void saleGameCopiesTest(){
         Company company = new Company();
         company.setStartMoney(14000000);
         Game game = new Game();
@@ -83,7 +83,7 @@ public class GameDevelopmentTest {
         Assert.assertEquals(26400000,company.printMoney());
     }
     @Test
-    public void test7(){
+    public void contactDataTest(){
         Developer developer = new Developer();
         developer.setPhoneNumber("+375443223223");
         developer.setEmail("developer@mail.ru");
@@ -92,7 +92,7 @@ public class GameDevelopmentTest {
         Assert.assertEquals("Address: Minsk/Belarus\nEmail: developer@mail.ru\nPhoneNumber: +375443223223\n",developer.printInfo());
     }
     @Test
-    public void test8(){
+    public void userBuyGameTest(){
         User user = new User();
         user.setMoney(1700);
         Store store = new Store();
@@ -116,7 +116,7 @@ public class GameDevelopmentTest {
         Assert.assertEquals(1654,user.getMoney());
     }
     @Test
-    public void test9(){
+    public void installRatingTest(){
         User user = new User();
         Store store = new Store();
         user.setNickname("KL1ck");
