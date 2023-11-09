@@ -42,8 +42,8 @@ public class OrientedGraph<T> {
         return false;
     }
     public boolean checkEdgeInGraph(Vertex<T> start,Vertex<T> end) {
-        for (int i = 0; i < edges.size(); i++) {
-            if (edges.get(i).getStartOfEdge() == start && edges.get(i).getEndOfEdge() == end) {
+        for (Edge<T> edge : edges) {
+            if (edge.getStartOfEdge() == start && edge.getEndOfEdge() == end) {
                 return true;
             }
         }
@@ -110,41 +110,39 @@ public class OrientedGraph<T> {
         return text;
     }
     public void createModifiedVirt(){
-        for (int i=0;i<vertices.size();i++){
+        for (Vertex<T> vertex : vertices) {
             ModifiedVirt<T> vertexVirt = new ModifiedVirt<T>();
-            vertexVirt.setKey(vertices.get(i));
-            vertexVirt.setCountNext(getStartEdgeOnThisVertex(vertices.get(i)).size());
-            vertexVirt.setCountPred(getEndEdgeOnThisVertex(vertices.get(i)).size());
-            vertexVirt.setNextLists(getStartEdgeOnThisVertex(vertices.get(i)));
-            vertexVirt.setPredLists(getEndEdgeOnThisVertex(vertices.get(i)));
+            vertexVirt.setKey(vertex);
+            vertexVirt.setCountNext(getStartEdgeOnThisVertex(vertex).size());
+            vertexVirt.setCountPred(getEndEdgeOnThisVertex(vertex).size());
+            vertexVirt.setNextLists(getStartEdgeOnThisVertex(vertex));
+            vertexVirt.setPredLists(getEndEdgeOnThisVertex(vertex));
             modifiedVirt.add(vertexVirt);
         }
     }
     private List<Edge<T>> getEndEdgeOnThisVertex(Vertex<T> vertex){
         List<Edge<T>> endEdgeOnThisVertex = new ArrayList<>();
-        for (int i=0;i<edges.size();i++)
-        {
-            if (edges.get(i).getEndOfEdge() == vertex){
-                endEdgeOnThisVertex.add(edges.get(i));
+        for (Edge<T> edge : edges) {
+            if (edge.getEndOfEdge() == vertex) {
+                endEdgeOnThisVertex.add(edge);
             }
         }
         return endEdgeOnThisVertex;
     }
     private List<Edge<T>> getStartEdgeOnThisVertex(Vertex<T> vertex){
         List<Edge<T>> startEdgeOnThisVertex = new ArrayList<>();
-        for (int i=0;i<edges.size();i++)
-        {
-            if (edges.get(i).getStartOfEdge() == vertex){
-                startEdgeOnThisVertex.add(edges.get(i));
+        for (Edge<T> edge : edges) {
+            if (edge.getStartOfEdge() == vertex) {
+                startEdgeOnThisVertex.add(edge);
             }
         }
         return startEdgeOnThisVertex;
     }
     public String printVertexInfoFromVirt(Vertex<T> vertex){
         String text = "";
-        for (int i=0;i<modifiedVirt.size();i++){
-            if (modifiedVirt.get(i).getKey() == vertex){
-                text = modifiedVirt.get(i).getVertexInfo();
+        for (ModifiedVirt<T> tModifiedVirt : modifiedVirt) {
+            if (tModifiedVirt.getKey() == vertex) {
+                text = tModifiedVirt.getVertexInfo();
                 return text;
             }
         }
