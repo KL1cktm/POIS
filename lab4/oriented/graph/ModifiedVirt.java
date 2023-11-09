@@ -3,13 +3,13 @@ package oriented.graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModifiedVirt {
+public class ModifiedVirt<T> {
     private int countPred;
-    private Vertex key;
+    private Vertex<T> key;
     private int countNext;
-    private List<NeighbourhoodListNode> nextLists = new ArrayList<>();
-    private List<NeighbourhoodListNode> predLists = new ArrayList<>();
-    public void setKey(Vertex key){
+    private List<NeighbourhoodListNode<T>> nextLists = new ArrayList<>();
+    private List<NeighbourhoodListNode<T>> predLists = new ArrayList<>();
+    public void setKey(Vertex<T> key){
         this.key=key;
     }
     public void setCountPred(int countPred){
@@ -18,36 +18,36 @@ public class ModifiedVirt {
     public void setCountNext(int countNext){
         this.countNext=countNext;
     }
-    public void setPredLists(List<Edge> edges){
+    public void setPredLists(List<Edge<T>> edges){
         for (int i=0;i<edges.size();i++){
             if (i == 0) {
-                NeighbourhoodListNode node = new NeighbourhoodListNode();
+                NeighbourhoodListNode<T> node = new NeighbourhoodListNode<T>();
                 node.setNodeVertex(edges.get(i).getStartOfEdge());
                 predLists.add(node);
             }
             else {
-                NeighbourhoodListNode node = new NeighbourhoodListNode();
+                NeighbourhoodListNode<T> node = new NeighbourhoodListNode<T>();
                 node.setNodeVertex(edges.get(i).getStartOfEdge());
                 predLists.get(predLists.size()).SetNextPredNode(node);
                 predLists.add(node);
             }
         }
     }
-    public void setNextLists(List<Edge> edges){
+    public void setNextLists(List<Edge<T>> edges){
         for (int i=0;i<edges.size();i++){
             if (i == 0) {
-                NeighbourhoodListNode node = new NeighbourhoodListNode();
+                NeighbourhoodListNode<T> node = new NeighbourhoodListNode<T>();
                 node.setNodeVertex(edges.get(i).getEndOfEdge());
                 nextLists.add(node);
             } else {
-                NeighbourhoodListNode node = new NeighbourhoodListNode();
+                NeighbourhoodListNode<T> node = new NeighbourhoodListNode<T>();
                 node.setNodeVertex(edges.get(i).getEndOfEdge());
                 nextLists.get(predLists.size()).SetNextPredNode(node);
                 nextLists.add(node);
             }
         }
     }
-    public Vertex getKey(){
+    public Vertex<T> getKey(){
         return this.key;
     }
     public String getVertexInfo(){

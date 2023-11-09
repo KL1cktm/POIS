@@ -1,12 +1,12 @@
 package oriented.graph;
 
-public class NeighbourhoodListNode {
-    private Vertex vertex;
-    private NeighbourhoodListNode next = null;
-    public void setNodeVertex(Vertex vertex){
+public class NeighbourhoodListNode<T> {
+    private Vertex<T> vertex;
+    private NeighbourhoodListNode<T> next = null;
+    public void setNodeVertex(Vertex<T> vertex){
         this.vertex=vertex;
     }
-    public void SetNextPredNode(NeighbourhoodListNode node){
+    public void SetNextPredNode(NeighbourhoodListNode<T> node){
         this.next=node;
     }
 }
